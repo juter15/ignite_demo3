@@ -1,3 +1,5 @@
+server:
+  port: 8182
 #ignite:
 #  igniteInstanceName: properties-instance-name
 #  communicationSpi:

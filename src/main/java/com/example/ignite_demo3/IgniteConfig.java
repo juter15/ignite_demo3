@@ -40,10 +40,13 @@ public class IgniteConfig {
         //IgniteLogger log = new Slf();
         //igniteConfiguration.setGridLogger(log);
 
+        //인증 활성화
+        //igniteConfiguration.setAuthenticationEnabled(true);
+
         // Ignite persistence configuration.
         DataStorageConfiguration storageCfg = new DataStorageConfiguration()
                 .setWalMode(WALMode.LOG_ONLY)
-                .setStoragePath("C:\\apache-ignite-2.12.0-bin\\work")
+                .setStoragePath("C:\\apache-ignite-2.12.0-bin\\work"+"/storage")
                 .setWalPath("C:\\apache-ignite-2.12.0-bin\\work" + "/wal")
                 .setWalArchivePath("C:\\apache-ignite-2.12.0-bin\\work" + "/wal/archive");
 
@@ -73,6 +76,9 @@ public class IgniteConfig {
         // Cache configuration
         CacheConfiguration<String, ToyModel> test1 = new CacheConfiguration<String, ToyModel>("Toy")
                 .setCacheMode(CacheMode.PARTITIONED)
+                /* Backups=1일경우
+                *  primary 1개, Backup 1개 총 2개의 복사본ㅇ이 존재
+                * */
                 //.setBackups(1)
                 .setAtomicityMode(CacheAtomicityMode.TRANSACTIONAL)
                 .setWriteSynchronizationMode(CacheWriteSynchronizationMode.PRIMARY_SYNC)

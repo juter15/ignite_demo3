@@ -14,11 +14,16 @@
     <name>ignite_demo3</name>
     <description>ignite_demo3</description>
     <properties>
+        <gridgain.version>8.8.17</gridgain.version>
         <ignite.version>2.12.0</ignite.version>
         <java.version>11</java.version>
         <ignite-spring-data-ext.version>1.0.0</ignite-spring-data-ext.version>
         <spring.data.version>2.4.15</spring.data.version>
     </properties>
+
+
+
+
     <dependencies>
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
@@ -76,6 +81,39 @@
             <artifactId>ignite-indexing</artifactId>
             <version>${ignite.version}</version>
         </dependency>
+
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.ignite/ignite-rest-http &ndash;&gt;
+        <dependency>
+            <groupId>org.apache.ignite</groupId>
+            <artifactId>ignite-rest-http</artifactId>
+            <version>${ignite.version}</version>
+        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.gridgain</groupId>-->
+<!--            <artifactId>ignite-core</artifactId>-->
+<!--            <version>${gridgain.version}</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.gridgain</groupId>-->
+<!--            <artifactId>ignite-spring</artifactId>-->
+<!--            <version>${gridgain.version}</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.gridgain/ignite-indexing &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.gridgain</groupId>-->
+<!--            <artifactId>ignite-indexing</artifactId>-->
+<!--            <version>8.7.23</version>-->
+<!--        </dependency>-->
+
+
+
+
+
+
         <!-- Auto config -->
 <!--        <dependency>-->
 <!--            <groupId>org.apache.ignite</groupId>-->
