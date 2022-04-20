@@ -53,31 +53,20 @@ public class IgniteConfig {
         // Ignite persistence configuration.
         DataStorageConfiguration storageCfg = new DataStorageConfiguration()
                 .setWalMode(WALMode.LOG_ONLY)
-//                .setStoragePath("C:\\apache-ignite-2.12.0-bin\\work"+"/storage")
-//                .setWalPath("C:\\apache-ignite-2.12.0-bin\\work" + "/wal")
-//                .setWalArchivePath("C:\\apache-ignite-2.12.0-bin\\work" + "/wal/archive");
                 .setStoragePath("/root/ignite/ignite/work"+"/storage")
                 .setWalPath("/root/ignite/ignite/work"+"/wal")
                 .setWalArchivePath("/root/ignite/ignite/work"+"/wal/archive");
-
+        igniteConfiguration.setSnapshotPath("/root/ignite/ignite/work"+"/snapshots");
         // Enabling the persistence.
         storageCfg.getDefaultDataRegionConfiguration().setPersistenceEnabled(true);
-
         // Applying settings.
         igniteConfiguration.setDataStorageConfiguration(storageCfg);
-        // Ignite snapShots configuration
-//        IgniteSnapshot
 
-        igniteConfiguration.setSnapshotPath("/root/ignite/ignite/work"+"/snapshots");
-
-//        BinaryConfiguration binaryConfiguration = new BinaryConfiguration();
-//        binaryConfiguration.setCompactFooter(false);
-//        igniteConfiguration.setBinaryConfiguration(binaryConfiguration);
 
         TcpDiscoveryMulticastIpFinder tcpDiscoveryMulticastIpFinder = new TcpDiscoveryMulticastIpFinder();
 
-        //tcpDiscoveryMulticastIpFinder.setAddresses(Arrays.asList("localhost","localhost:47500..47509"));
-        tcpDiscoveryMulticastIpFinder.setAddresses(Arrays.asList("192.168.0.109:47500..47509","192.168.0.111:47500..47509","192.168.0.112:47500..47509"));
+        tcpDiscoveryMulticastIpFinder.setAddresses(Arrays.asList("localhost:47500..47509"));
+        //tcpDiscoveryMulticastIpFinder.setAddresses(Arrays.asList("192.168.0.109:47500..47509","192.168.0.111:47500..47509","192.168.0.112:47500..47509"));
 
         TcpDiscoverySpi tcpDiscoverySpi = new TcpDiscoverySpi();
 
@@ -85,6 +74,8 @@ public class IgniteConfig {
 //        tcpDiscoveryVmIpFinder.setAddresses(Collections.singletonList("127.0.0.1:47500..47509"));
 
         tcpDiscoverySpi.setIpFinder(tcpDiscoveryMulticastIpFinder);
+//        //파티션 손실 방지 // 단 비정상 종료 방지할수없음
+//        igniteConfiguration.setShutdownPolicy(ShutdownPolicy.GRACEFUL);
 
         igniteConfiguration.setDiscoverySpi(tcpDiscoverySpi);
         return igniteConfiguration;
@@ -101,8 +92,8 @@ public class IgniteConfig {
        // ignite.cluster().setBaselineTopology(nodes);
 
         //baseline node 재조정
-        ignite.cluster().baselineAutoAdjustEnabled(true);
-        ignite.cluster().baselineAutoAdjustTimeout(1000);
+        //ignite.cluster().baselineAutoAdjustEnabled(true);
+        //ignite.cluster().baselineAutoAdjustTimeout(1000);
         //server Node에 캐쉬 초기화시 persistence storage 오류 발생
         // Cache configuration
 /*        CacheConfiguration<String, ToyModel> test1 = new CacheConfiguration<String, ToyModel>("Toy")
